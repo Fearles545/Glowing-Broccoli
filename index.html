@@ -3,20 +3,33 @@
 
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <link rel="icon" type="image/svg+xml" href="./images/glowing_broccoli.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vite App</title>
+  <title>Glowing Broccoli App</title>
 </head>
 
-<body>
+<body id="body">
+
   <div id="app">
     <div>
-      <a href="https://vitejs.dev" target="_blank">
-        <img src="./images/vite.svg" class="logo" alt="Vite logo" />
-      </a>
-      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-        <img src="./images/javascript.svg" class="logo vanilla" alt="JavaScript logo" />
-      </a>
+      <img src="./images/glowing_broccoli.png" class="logo" alt="Glowing Broccoli logo" />
+    </div>
+
+    <div class="inputs">
+      <div class="red">
+        <label for="red"></label>
+        <input type="color" name="red" id="red" value="#ff0000">
+      </div>
+
+      <div class="green">
+        <label for="green"></label>
+        <input type="color" name="green" id="green" value="#00ff00">
+      </div>
+
+      <div class="blue">
+        <label for="blue"></label>
+        <input type="color" name="blue" id="blue" value="#0000ff">
+      </div>
     </div>
   </div>
   <script type="module" src="/main.js"></script>
