@@ -1,4 +1,5 @@
 import './style.css';
-import { changeColor } from './src/index';
+import { changeColor, colorPickersValues } from './src/index';
+import { deg } from './src/logoButton';
 
-changeColor();
+changeColor(colorPickersValues, deg);
