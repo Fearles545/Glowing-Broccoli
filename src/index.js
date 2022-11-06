@@ -6,16 +6,11 @@ import {
 } from './colorPickerGenerator';
 
 const body = selectNode('#body');
-const allPickers = selectNodes('.inputs input');
 let colorPickersValues = [];
 let colorPickers = [];
 
 createColorPickers(colorInputsNumber);
-
-for (const picker of selectNodes('.inputs input')) {
-  colorPickers.push(picker);
-  colorPickersValues.push(hex2rgb(picker.value));
-}
+resetArrays();
 
 function resetArrays() {
   colorPickersValues = [];
@@ -32,14 +27,6 @@ function resetArrays() {
       changeColor(colorPickersValues, deg);
     });
   }
-}
-
-// Add eventListeners for every input on change color
-for (let i = 0; i < colorPickers.length; i++) {
-  colorPickers[i].addEventListener('input', () => {
-    colorPickersValues[i] = hex2rgb(colorPickers[i].value);
-    changeColor(colorPickersValues, deg);
-  });
 }
 
 // Change background css-property of body into linear-gradient with actual colors of colorpickers
