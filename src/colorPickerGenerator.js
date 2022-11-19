@@ -1,33 +1,34 @@
-import { selectNode } from './utils';
+import { selectNode, selectNodes } from './utils';
 import {
   changeColor,
+  colorPickers,
   colorPickersValues,
   resetArrays,
 } from './index';
 import { deg } from './logoButton';
+import { listeners } from './colorStops';
 
 const plusButton = selectNode('.plus');
+const minusButton = selectNode('.minus');
+const inputRangeOne = selectNode('.input-range-one');
+const inputRangeTwo = selectNode('.input-range-two');
+let colorStopButtons;
 const colors = [
+  '',
   '#ff0000',
+  '#5a25f8',
   '#00ff00',
   '#0000ff',
-  '#5a25f8',
   '#daa520',
 ];
 
 const colorInputsContainer = selectNode('.inputs');
 let colorInputsNumber = 2;
 
-plusButton.addEventListener('click', () => {
-  createColorPickers();
-  resetArrays();
-  changeColor(colorPickersValues, deg);
-});
-
 function createColorPickers(number = 1) {
   for (let i = 1; i <= number; i++) {
     const container = document.createElement('div');
-    container.className = 'color-picker';
+    container.className = `color-picker picker${i}`;
 
     const label = document.createElement('label');
     label.setAttribute('for', `picker${i}`);
@@ -36,10 +37,41 @@ function createColorPickers(number = 1) {
     input.setAttribute('type', 'color');
     input.id = `picker${i}`;
     input.setAttribute('value', `${colors[i]}`);
+    input.className = 'input-picker';
 
-    container.append(label, input);
+    const colorStopButton = document.createElement('button');
+    colorStopButton.innerText = 'Color Stop';
+    colorStopButton.className = 'color-stop-button';
+
+    container.append(label, input, colorStopButton);
     colorInputsContainer.append(container);
   }
+
+  colorStopButtons = selectNodes('.color-stop-button');
 }
 
-export { createColorPickers, colorInputsNumber, plusButton };
+plusButton.addEventListener('click', () => {
+  createColorPickers();
+  resetArrays();
+  changeColor(colorPickersValues, deg);
+  listeners(colorStopButtons, colorPickers);
+});
+
+minusButton.addEventListener('click', () => {
+  let activePickers = selectNodes('.color-picker');
+
+  if (activePickers.length > 2) {
+    activePickers[activePickers.length - 1].remove();
+    resetArrays();
+    changeColor(colorPickersValues, deg);
+    listeners(colorStopButtons, colorPickers);
+    return;
+  }
+});
+
+export {
+  createColorPickers,
+  colorInputsNumber,
+  colorInputsContainer,
+  colorStopButtons,
+};

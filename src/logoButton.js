@@ -1,5 +1,6 @@
 import { selectNode } from './utils';
 import { changeColor, colorPickersValues } from './index';
+import { colorInputsContainer } from './colorPickerGenerator';
 
 const logo = selectNode('.logo');
 const minDegree = 0;
@@ -14,9 +15,10 @@ let deg = 0;
 logo.addEventListener('click', () => {
   logoClicked = !logoClicked;
   logoClicked ? startDegreeIteration() : stopTimer();
+  logo.classList.toggle('logo-clicked');
 });
 /**
- * Function that starts iteration of linear-gradient degree by degreeDelta.
+ * Starts iteration of linear-gradient degree by degreeDelta.
  */
 function startDegreeIteration() {
   interval = setInterval(() => {
@@ -26,13 +28,16 @@ function startDegreeIteration() {
 
     changeColor(colorPickersValues, deg);
   }, intervalTime);
+
+  colorInputsContainer.style.opacity = '0';
 }
 /**
- * Funtion that stops iteration of linear-gradient degree.
+ * Stops iteration of linear-gradient degree.
  */
 function stopTimer() {
   clearInterval(interval);
   interval = undefined;
+  colorInputsContainer.style.opacity = '1';
 }
 
 export { deg };

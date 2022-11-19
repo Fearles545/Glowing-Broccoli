@@ -3,20 +3,24 @@ import { deg } from './logoButton';
 import {
   createColorPickers,
   colorInputsNumber,
+  colorStopButtons,
 } from './colorPickerGenerator';
+import { listeners } from './colorStops';
 
 const body = selectNode('#body');
+
 let colorPickersValues = [];
 let colorPickers = [];
 
 createColorPickers(colorInputsNumber);
 resetArrays();
+listeners(colorStopButtons, colorPickers);
 
 function resetArrays() {
   colorPickersValues = [];
   colorPickers = [];
 
-  for (const picker of selectNodes('.inputs input')) {
+  for (const picker of selectNodes('.input-picker')) {
     colorPickers.push(picker);
     colorPickersValues.push(hex2rgb(picker.value));
   }
@@ -46,5 +50,9 @@ function changeColor(colorPickersArray, degree) {
 
   body.style.background = background;
 }
+
+console.log(
+  'БАГ ПРИ ДОБАВЛЕНИИ ПИКЕРОВ КНОПКА КОЛОРСТОП РАБОТАЕТ ПО ЕБАНУТОМУ !!!'
+);
 
 export { changeColor, colorPickersValues, colorPickers, resetArrays };
