@@ -273,3 +273,20 @@ h1 {
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   transition: box-shadow 1s;
 }
+
+@media only screen and (width < 700px) {
+  .logo {
+    width: 100%;
+    margin: 10rem 0 4rem;
+  }
+
+  .logo-clicked:hover,
+  .logo-clicked {
+    margin-top: 1rem;
+    width: 60%;
+  }
+
+  .inputs {
+    flex-wrap: wrap;
+  }
+}

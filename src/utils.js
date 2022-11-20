@@ -23,5 +23,13 @@ function hex2rgb(hex) {
 
   return [r, g, b];
 }
+/**
+ * Return random whole number not greater than passed argument
+ * @param {number} num maximum value of random number
+ * @returns {number} random number
+ */
+function interger(num) {
+  return Math.round(Math.random() * num);
+}
 
-export { selectNode, selectNodes, hex2rgb };
+export { selectNode, selectNodes, hex2rgb, interger };

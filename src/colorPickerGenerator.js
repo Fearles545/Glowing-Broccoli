@@ -1,4 +1,4 @@
-import { selectNode, selectNodes } from './utils';
+import { selectNode, selectNodes, interger } from './utils';
 import {
   changeColor,
   colorPickers,
@@ -7,20 +7,13 @@ import {
 } from './index';
 import { deg } from './logoButton';
 import { listeners } from './colorStops';
+import { colors } from './colors';
 
 const plusButton = selectNode('.plus');
 const minusButton = selectNode('.minus');
 const inputRangeOne = selectNode('.input-range-one');
 const inputRangeTwo = selectNode('.input-range-two');
 let colorStopButtons;
-const colors = [
-  '',
-  '#ff0000',
-  '#5a25f8',
-  '#00ff00',
-  '#0000ff',
-  '#daa520',
-];
 
 const colorInputsContainer = selectNode('.inputs');
 let colorInputsNumber = 2;
@@ -28,15 +21,20 @@ let colorInputsNumber = 2;
 function createColorPickers(number = 1) {
   for (let i = 1; i <= number; i++) {
     const container = document.createElement('div');
-    container.className = `color-picker picker${i}`;
+    container.className = `color-picker picker${
+      selectNodes('.color-picker').length
+    }`;
 
     const label = document.createElement('label');
-    label.setAttribute('for', `picker${i}`);
+    label.setAttribute(
+      'for',
+      `picker${selectNodes('.color-picker').length}`
+    );
 
     const input = document.createElement('input');
     input.setAttribute('type', 'color');
-    input.id = `picker${i}`;
-    input.setAttribute('value', `${colors[i]}`);
+    input.id = `picker${selectNodes('.color-picker').length}`;
+    input.setAttribute('value', `${colors[interger(colors.length)]}`);
     input.className = 'input-picker';
 
     const colorStopButton = document.createElement('button');

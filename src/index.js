@@ -51,8 +51,4 @@ function changeColor(colorPickersArray, degree) {
   body.style.background = background;
 }
 
-console.log(
-  'БАГ ПРИ ДОБАВЛЕНИИ ПИКЕРОВ КНОПКА КОЛОРСТОП РАБОТАЕТ ПО ЕБАНУТОМУ !!!'
-);
-
 export { changeColor, colorPickersValues, colorPickers, resetArrays };
